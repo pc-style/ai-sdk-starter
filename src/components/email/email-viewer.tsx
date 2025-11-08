@@ -34,19 +34,19 @@ export function EmailViewer({
   return (
     <div className="flex flex-col h-full">
       <div className="border-b border-zinc-200 dark:border-zinc-800 p-4">
-        <h2 className="text-xl font-semibold mb-2">{email.subject}</h2>
+        <h2 className="text-xl font-semibold mb-2 text-zinc-900 dark:text-zinc-50">{email.subject}</h2>
         <div className="flex items-center justify-between mb-2">
           <div>
-            <div className="text-sm font-medium">
+            <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
               {email.from.name || email.from.email}
             </div>
-            <div className="text-xs text-zinc-500">{email.from.email}</div>
+            <div className="text-xs text-zinc-600 dark:text-zinc-400">{email.from.email}</div>
           </div>
-          <div className="text-sm text-zinc-500">
+          <div className="text-sm text-zinc-600 dark:text-zinc-400">
             {formatDate(new Date(email.date))}
           </div>
         </div>
-        <div className="text-xs text-zinc-500">
+        <div className="text-xs text-zinc-600 dark:text-zinc-400">
           To: {email.to.map((t) => t.email).join(', ')}
         </div>
       </div>
@@ -75,11 +75,11 @@ export function EmailViewer({
       <div className="flex-1 overflow-auto p-6">
         {email.bodyHtml ? (
           <div
-            className="prose dark:prose-invert max-w-none"
+            className="prose dark:prose-invert max-w-none text-zinc-900 dark:text-zinc-100"
             dangerouslySetInnerHTML={{ __html: email.bodyHtml }}
           />
         ) : (
-          <div className="whitespace-pre-wrap">{email.body}</div>
+          <div className="whitespace-pre-wrap text-zinc-900 dark:text-zinc-100 leading-relaxed">{email.body}</div>
         )}
       </div>
     </div>

@@ -91,28 +91,28 @@ export function ComposeDialog({
         </DialogHeader>
         <div className="space-y-4">
           <div>
-            <label className="text-sm font-medium">To</label>
+            <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">To</label>
             <input
               type="email"
               value={to}
               onChange={(e) => setTo(e.target.value)}
-              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950"
+              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-500"
               placeholder="recipient@example.com"
             />
           </div>
           <div>
-            <label className="text-sm font-medium">Subject</label>
+            <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Subject</label>
             <input
               type="text"
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950"
+              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-500"
               placeholder="Email subject"
             />
           </div>
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm font-medium">Message</label>
+              <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Message</label>
               {replyTo && (
                 <Button
                   variant="ghost"
@@ -128,19 +128,19 @@ export function ComposeDialog({
             <textarea
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950 min-h-[200px]"
+              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-500 min-h-[200px]"
               placeholder="Type your message..."
             />
           </div>
           <div>
-            <label className="text-sm font-medium">
+            <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
               Send Later (optional)
             </label>
             <input
               type="datetime-local"
               value={scheduledTime}
               onChange={(e) => setScheduledTime(e.target.value)}
-              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950"
+              className="w-full mt-1 px-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100"
             />
           </div>
           <div className="flex justify-end gap-2">

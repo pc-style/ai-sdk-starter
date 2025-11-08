@@ -253,7 +253,7 @@ export default function InboxPage() {
       {/* Sidebar */}
       <div className="w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4 flex flex-col">
         <div className="mb-4">
-          <h1 className="text-xl font-bold mb-4">AI Mail</h1>
+          <h1 className="text-xl font-bold mb-4 text-zinc-900 dark:text-zinc-50">AI Mail</h1>
           <AccountSwitcher
             accounts={accounts}
             currentAccountId={currentAccountId}
@@ -284,7 +284,7 @@ export default function InboxPage() {
       </div>
 
       {/* Email List */}
-      <div className="w-96 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex flex-col">
+      <div className="w-96 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex flex-col overflow-hidden">
         <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Inbox</h2>
@@ -298,8 +298,8 @@ export default function InboxPage() {
           />
         </div>
 
-        <Tabs defaultValue="all" className="flex-1 flex flex-col">
-          <TabsList className="mx-4 mt-2">
+        <Tabs defaultValue="all" className="flex-1 flex flex-col min-h-0">
+          <TabsList className="mx-4 mt-2 flex-shrink-0">
             <TabsTrigger value="all">
               All {emails.length > 0 && `(${emails.length})`}
             </TabsTrigger>
@@ -314,10 +314,10 @@ export default function InboxPage() {
             </TabsTrigger>
           </TabsList>
 
-          <div className="flex-1 overflow-auto">
-            <TabsContent value="all" className="mt-0 h-full">
+          <div className="flex-1 overflow-y-auto min-h-0">
+            <TabsContent value="all" className="mt-0 h-auto">
               {loading ? (
-                <div className="flex flex-col items-center justify-center h-full space-y-3 text-zinc-500">
+                <div className="flex flex-col items-center justify-center min-h-[400px] space-y-3 text-zinc-600 dark:text-zinc-400">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
                   <p className="text-sm">Loading emails...</p>
                 </div>
@@ -330,7 +330,7 @@ export default function InboxPage() {
               )}
             </TabsContent>
 
-            <TabsContent value="important" className="mt-0 h-full">
+            <TabsContent value="important" className="mt-0 h-auto">
               <EmailList
                 emails={categorizedEmails.important}
                 selectedId={selectedEmailId}
@@ -338,7 +338,7 @@ export default function InboxPage() {
               />
             </TabsContent>
 
-            <TabsContent value="newsletters" className="mt-0 h-full">
+            <TabsContent value="newsletters" className="mt-0 h-auto">
               <EmailList
                 emails={categorizedEmails.newsletters}
                 selectedId={selectedEmailId}
@@ -346,7 +346,7 @@ export default function InboxPage() {
               />
             </TabsContent>
 
-            <TabsContent value="other" className="mt-0 h-full">
+            <TabsContent value="other" className="mt-0 h-auto">
               <EmailList
                 emails={categorizedEmails.other}
                 selectedId={selectedEmailId}
@@ -370,11 +370,11 @@ export default function InboxPage() {
             }}
           />
         ) : (
-          <div className="flex flex-col items-center justify-center h-full text-zinc-500 space-y-3">
+          <div className="flex flex-col items-center justify-center h-full text-zinc-600 dark:text-zinc-400 space-y-3">
             <Inbox className="h-16 w-16 text-zinc-300 dark:text-zinc-700" />
             <div className="text-center space-y-1">
-              <p className="text-sm font-medium">No email selected</p>
-              <p className="text-xs text-zinc-400">Select an email from the list to view its contents</p>
+              <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">No email selected</p>
+              <p className="text-xs text-zinc-600 dark:text-zinc-400">Select an email from the list to view its contents</p>
             </div>
           </div>
         )}

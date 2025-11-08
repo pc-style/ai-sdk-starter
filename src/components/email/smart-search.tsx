@@ -51,7 +51,7 @@ export function SmartSearch({ onSearch, provider }: SmartSearchProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search emails or use natural language..."
-          className="w-full pl-10 pr-24 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950"
+          className="w-full pl-10 pr-24 py-2 border border-zinc-200 dark:border-zinc-800 rounded-md bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-500"
         />
         <Button
           type="submit"
@@ -64,7 +64,7 @@ export function SmartSearch({ onSearch, provider }: SmartSearchProps) {
           {isParsingNL ? 'Searching...' : 'AI Search'}
         </Button>
       </div>
-      <div className="mt-1 text-xs text-zinc-500">
+      <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
         Try: &quot;unread emails from last week&quot; or &quot;messages with attachments&quot;
       </div>
     </form>

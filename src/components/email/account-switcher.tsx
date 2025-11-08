@@ -52,7 +52,7 @@ export function AccountSwitcher({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-full justify-start">
+        <Button variant="outline" className="w-full justify-start text-zinc-900 dark:text-zinc-100">
           <Mail className="mr-2 h-4 w-4" />
           <span className="truncate">
             {currentAccount?.email || 'Select account'}
@@ -72,22 +72,22 @@ export function AccountSwitcher({
                 setOpen(false);
               }}
               className={cn(
-                'flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800',
+                'flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100',
                 currentAccountId === account.id && 'bg-zinc-100 dark:bg-zinc-800'
               )}
             >
               <Mail className="h-4 w-4" />
               <div className="flex-1 truncate">
-                <div className="font-medium">{account.email}</div>
+                <div className="font-medium text-zinc-900 dark:text-zinc-100">{account.email}</div>
                 {account.name && (
-                  <div className="text-xs text-zinc-500">{account.name}</div>
+                  <div className="text-xs text-zinc-600 dark:text-zinc-400">{account.name}</div>
                 )}
               </div>
               {currentAccountId === account.id && <Check className="h-4 w-4" />}
             </button>
           ))}
           <div className="border-t border-zinc-200 pt-2 dark:border-zinc-800">
-            <div className="text-xs font-medium text-zinc-500 mb-2 px-3">
+            <div className="text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-2 px-3">
               Add Account
             </div>
             <Button

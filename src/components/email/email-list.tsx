@@ -24,7 +24,7 @@ interface EmailListProps {
 export function EmailList({ emails, selectedId, onSelect }: EmailListProps) {
   if (emails.length === 0) {
     return (
-      <div className="flex items-center justify-center h-full text-zinc-500">
+      <div className="flex items-center justify-center min-h-[400px] text-zinc-600 dark:text-zinc-400">
         No emails found
       </div>
     );
@@ -52,7 +52,7 @@ export function EmailList({ emails, selectedId, onSelect }: EmailListProps) {
             }
           }}
         >
-          <article className="flex items-start gap-3">
+          <article className="flex items-start gap-3 w-full min-w-0">
             {/* Unread indicator */}
             <div className="flex-shrink-0 pt-1.5">
               {!email.isRead && (
