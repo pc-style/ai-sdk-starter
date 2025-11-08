@@ -31,43 +31,92 @@ export function EmailList({ emails, selectedId, onSelect }: EmailListProps) {
   }
 
   return (
-    <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
+    <ul role="listbox" aria-label="Email list" className="divide-y divide-zinc-200 dark:divide-zinc-800">
       {emails.map((email) => (
-        <button
+        <li
           key={email.id}
+          role="option"
+          aria-selected={selectedId === email.id}
           onClick={() => onSelect(email.id)}
           className={cn(
-            'w-full text-left px-4 py-3 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors',
-            selectedId === email.id && 'bg-zinc-100 dark:bg-zinc-800',
-            !email.isRead && 'font-semibold'
+            'w-full cursor-pointer px-4 py-4 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all duration-150',
+            'focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-1',
+            selectedId === email.id && 'bg-blue-50 dark:bg-blue-950/20 border-l-4 border-l-blue-500',
+            !email.isRead && 'bg-white dark:bg-zinc-900'
           )}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onSelect(email.id);
+            }
+          }}
         >
-          <div className="flex items-start gap-3">
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="truncate text-sm">
+          <article className="flex items-start gap-3">
+            {/* Unread indicator */}
+            <div className="flex-shrink-0 pt-1.5">
+              {!email.isRead && (
+                <div
+                  className="w-2.5 h-2.5 rounded-full bg-blue-500"
+                  aria-label="Unread"
+                  title="Unread email"
+                />
+              )}
+            </div>
+
+            <div className="flex-1 min-w-0 space-y-1">
+              {/* Header: Sender and Time */}
+              <div className="flex items-baseline justify-between gap-2">
+                <span
+                  className={cn(
+                    "truncate text-sm",
+                    !email.isRead ? "font-semibold text-zinc-900 dark:text-zinc-50" : "font-medium text-zinc-700 dark:text-zinc-300"
+                  )}
+                >
                   {email.from.name || email.from.email}
                 </span>
-                <span className="text-xs text-zinc-500 whitespace-nowrap">
+                <time
+                  className="text-xs text-zinc-500 dark:text-zinc-400 whitespace-nowrap flex-shrink-0"
+                  dateTime={email.date.toISOString()}
+                >
                   {formatDate(new Date(email.date))}
-                </span>
+                </time>
               </div>
-              <div className="text-sm truncate mb-1">{email.subject}</div>
-              <div className="text-xs text-zinc-500 truncate">
+
+              {/* Subject */}
+              <h3
+                className={cn(
+                  "text-sm truncate leading-tight",
+                  !email.isRead ? "font-semibold text-zinc-900 dark:text-zinc-50" : "font-normal text-zinc-700 dark:text-zinc-300"
+                )}
+              >
+                {email.subject || '(No subject)'}
+              </h3>
+
+              {/* Snippet */}
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate leading-relaxed">
                 {email.snippet}
-              </div>
+              </p>
             </div>
-            <div className="flex flex-col items-end gap-1">
+
+            {/* Icons: Star and Attachment */}
+            <div className="flex flex-col items-end gap-1.5 flex-shrink-0 pt-1">
               {email.isStarred && (
-                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <Star
+                  className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                  aria-label="Starred"
+                />
               )}
               {email.hasAttachments && (
-                <Paperclip className="h-4 w-4 text-zinc-400" />
+                <Paperclip
+                  className="h-4 w-4 text-zinc-400"
+                  aria-label="Has attachments"
+                />
               )}
             </div>
-          </div>
-        </button>
+          </article>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
