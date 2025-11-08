@@ -1,24 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Mail Client
+
+An AI-powered email client built with Next.js 16 and Vercel AI SDK.
+
+## Tech Stack
+
+- **Next.js 16** - React framework with App Router
+- **Vercel AI SDK** - AI integration toolkit
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **OpenAI** - AI model provider (default)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm (package manager)
+
+### Installation
+
+1. Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+2. Set up environment variables:
+
+Create a `.env.local` file in the root directory:
+
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys).
+
+3. Run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/api/chat/route.ts` - AI chat API endpoint
+- `src/app/page.tsx` - Main page component
+- `src/app/layout.tsx` - Root layout
+
+## Features
+
+- ✅ Next.js 16 with App Router
+- ✅ AI SDK integration ready
+- ✅ TypeScript configured
+- ✅ Tailwind CSS v4
+- ✅ API route for AI chat (`/api/chat`)
 
 ## Learn More
 
